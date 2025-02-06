@@ -1,0 +1,9 @@
+﻿  glad.c
+  Naomi-GDGRAP.cpp
+C:\Users\JM\Downloads\New\New\GDGRAP-Inoferio\Naomi-GDGRAP\Naomi-GDGRAP.cpp(38,8): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\JM\Downloads\New\New\GDGRAP-Inoferio\Naomi-GDGRAP\Naomi-GDGRAP.cpp(41,8): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\JM\Downloads\New\New\GDGRAP-Inoferio\Naomi-GDGRAP\Naomi-GDGRAP.cpp(44,8): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\JM\Downloads\New\New\GDGRAP-Inoferio\Naomi-GDGRAP\Naomi-GDGRAP.cpp(47,8): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\JM\Downloads\New\New\GDGRAP-Inoferio\Naomi-GDGRAP\Naomi-GDGRAP.cpp(262,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Naomi-Assignment1.vcxproj -> C:\Users\JM\Downloads\New\New\GDGRAP-Inoferio\Naomi-GDGRAP\x64\Debug\Naomi-GDGRAP.exe

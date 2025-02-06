@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\JM\\Downloads\\GDPGRAPH-Naomi-Test\\GDPHRAPH-INOFERIO-TEST\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\JM\\Downloads\\GDPGRAPH-Naomi-Test\\GDPHRAPH-INOFERIO-TEST\\New\\GDGRAP-Inoferio\\Naomi-GDGRAP\\Naomi-GDGRAP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:New\\GDGRAP-Inoferio\\Naomi-GDGRAP\\Naomi-GDGRAP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Naomi-GDGRAP.cpp",
+              "DocumentMoniker": "C:\\Users\\JM\\Downloads\\GDPGRAPH-Naomi-Test\\GDPHRAPH-INOFERIO-TEST\\New\\GDGRAP-Inoferio\\Naomi-GDGRAP\\Naomi-GDGRAP.cpp",
+              "RelativeDocumentMoniker": "New\\GDGRAP-Inoferio\\Naomi-GDGRAP\\Naomi-GDGRAP.cpp",
+              "ToolTip": "C:\\Users\\JM\\Downloads\\GDPGRAPH-Naomi-Test\\GDPHRAPH-INOFERIO-TEST\\New\\GDGRAP-Inoferio\\Naomi-GDGRAP\\Naomi-GDGRAP.cpp",
+              "RelativeToolTip": "New\\GDGRAP-Inoferio\\Naomi-GDGRAP\\Naomi-GDGRAP.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-06T04:38:57.715Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
