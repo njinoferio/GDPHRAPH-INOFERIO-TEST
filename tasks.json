@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile Naomi-GDGRAP.cpp",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++14",
+                "-g",
+                "Naomi-GDGRAP.cpp",
+                "-o", "build/Naomi-GDGRAP.o",
+                "-I/Users/naomi/Documents/GitHub/GDPHRAPH-INOFERIO-TEST/Dependencies/include",
+                "-I/opt/homebrew/opt/glfw/include",
+                "-I/opt/homebrew/opt/libglvnd/include",
+                "-I/Users/naomi/Documents/GitHub/GDPHRAPH-INOFERIO-TEST/Dependencies/include/KHR",
+                "-I/Users/naomi/Documents/GitHub/GDPHRAPH-INOFERIO-TEST/Dependencies/include/glad"
+            ],
+            "cwd": "/Users/naomi/Documents/GitHub/GDPHRAPH-INOFERIO-TEST"
+        },
+        {
+            "label": "Link everything",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "build/Naomi-GDGRAP.o",
+                "build/glad.o",
+                "-o", "build/app",
+                "-L/opt/homebrew/lib",
+                "-lglfw",
+                "-framework", "OpenGL"
+            ],
+            "cwd": "/Users/naomi/Documents/GitHub/GDPHRAPH-INOFERIO-TEST"
+        }
+    ]
+}

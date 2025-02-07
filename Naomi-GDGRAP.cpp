@@ -11,10 +11,12 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "tiny_obj_loader.h"
 
-//float x_mod = 0;
-//float y_mod = 0;
-
 float theta = 0;
+float radius = 1.0f;
+float angle = 0.1f;
+float rabbitRotationSpeed = 0.01f;
+float circleRotationSpeed = 0.08f;
+
 
 float axis_x = 0;
 float axis_y = 1;
@@ -47,9 +49,6 @@ void Key_Callback(GLFWwindow* window,
 		y -= 0.10;
 	}
 
-
-
-
 	if (key == GLFW_KEY_Q && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
 		scale_x -= 0.50;
 		scale_y -= 0.50;
@@ -60,9 +59,6 @@ void Key_Callback(GLFWwindow* window,
 		scale_y += 0.50;
 		scale_z += 0.50;
 	}
-
-
-
 
 	if (key == GLFW_KEY_LEFT && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
 		theta -= 10.00;
@@ -86,7 +82,6 @@ void Key_Callback(GLFWwindow* window,
 	}
 	
 }
-
 
 int main(void) {
 	GLFWwindow* window;
@@ -165,22 +160,18 @@ int main(void) {
 	}
 
 
-	GLfloat vertices[]{
-		0.f,    0.5f,   0.f
-		- 0.5f,  0.f,    0.f,
-		0.5f,   0.f,    0.f
-	};
+	// GLfloat vertices[]{
+	// 	0.f,    0.5f,   0.f
+	// 	- 0.5f,  0.f,    0.f,
+	// 	0.5f,   0.f,    0.f
+	// };
 
-	GLuint indices[]{
-		0, 1, 2
-	};
-
-
+	// GLuint indices[]{
+	// 	0, 1, 2
+	// };
 
 	GLuint VAO, VBO, EBO;
 	glGenVertexArrays(1, &VAO);
-
-
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
 
@@ -226,12 +217,16 @@ int main(void) {
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
+        angle += circleRotationSpeed;
 
-		/*unsigned int xLoc = glGetUniformLocation(shaderProg, "x");
-		glUniform1f(xLoc, x_mod);
+        glUseProgram(shaderProg);
 
-		unsigned int yLoc = glGetUniformLocation(shaderProg, "y");
-		glUniform1f(yLoc, y_mod);*/
+        for(int i = 0; i < 3; i++){
+            float rabbitAngle = (i * 2 * M_PI)/3;
+            float newX = radius * cos(angle + rabbitAngle);
+            float newX = radius * cos(angle + rabbitAngle);
+            float rabbitRotationAngle = angle * 5;
+
 
 		glm::mat4 identity_matrix4 = glm::mat4(1.0f);
 
@@ -239,18 +234,15 @@ int main(void) {
 			identity_matrix4,
 			glm::vec3(x, y, z)
 		);
-
 		transformation_matrix = glm::scale(
 			transformation_matrix,
 			glm::vec3(scale_x, scale_y, scale_z)
 		);
-
 		transformation_matrix = glm::rotate(
 			transformation_matrix,glm::radians(theta),
 			glm::vec3(axis_x, axis_y, axis_z)
 		);
 
-		
 		unsigned int transformLoc = glGetUniformLocation(shaderProg, "transform");
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformation_matrix));
 		
@@ -260,7 +252,7 @@ int main(void) {
 		glBindVertexArray(VAO);
 
 		glDrawElements(GL_TRIANGLES, mesh_indices.size(), GL_UNSIGNED_INT, 0);
-
+        }
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
 
