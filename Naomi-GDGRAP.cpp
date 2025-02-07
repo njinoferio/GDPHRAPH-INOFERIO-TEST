@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -11,97 +12,32 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "tiny_obj_loader.h"
 
-float theta = 0;
-float radius = 1.0f;
-float angle = 0.1f;
-float rabbitRotationSpeed = 0.01f;
+
+float radius = 0.5f;
+float angle = 0.0f;
+float rabbitRotationSpeed = 0.5f;
 float circleRotationSpeed = 0.08f;
-
-
-float axis_x = 0;
-float axis_y = 1;
-float axis_z = 0;
 
 float scale_x = 1;
 float scale_y = 1;
 float scale_z = 1;
 
-float x = 0;
-float y = 0;
-float z = 0;
-
-void Key_Callback(GLFWwindow* window,
-	int key,
-	int scancode,
-	int action,
-	int mods) {
-
-	if (key == GLFW_KEY_D && (action == GLFW_REPEAT || action == GLFW_PRESS)){
-		x += 0.10;
-	}
-	if (key == GLFW_KEY_A && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		x -= 0.10;
-	}
-	if (key == GLFW_KEY_W && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		y += 0.10;
-	}
-	if (key == GLFW_KEY_S && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		y -= 0.10;
-	}
-
-	if (key == GLFW_KEY_Q && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		scale_x -= 0.50;
-		scale_y -= 0.50;
-		scale_z -= 0.50;
-	}
-	if (key == GLFW_KEY_E && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		scale_x += 0.50;
-		scale_y += 0.50;
-		scale_z += 0.50;
-	}
-
-	if (key == GLFW_KEY_LEFT && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		theta -= 10.00;
-		axis_x = 0;
-		axis_y = 1;
-	}
-	if (key == GLFW_KEY_RIGHT && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		theta += 10.00;
-		axis_x = 0;
-		axis_y = 1;
-	}
-	if (key == GLFW_KEY_UP && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		theta -= 10.00;
-		axis_x = 1;
-		axis_y = 0;
-	}
-	if (key == GLFW_KEY_DOWN && (action == GLFW_REPEAT || action == GLFW_PRESS)) {
-		theta += 10.00;
-		axis_x = 1;
-		axis_y = 0;
-	}
-	
-}
 
 int main(void) {
 	GLFWwindow* window;
 
-	/* Initialize the library */
 	if (!glfwInit())
 		return -1;
 
-	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(640, 640, "INOFERIO, NAOMI ", NULL, NULL);
 	if (!window) {
 		glfwTerminate();
 		return -1;
 	}
 
-	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 	gladLoadGL();
 
-	glfwSetKeyCallback(window, Key_Callback);
 
 	std::fstream vertSrc("Shaders/sample.vert");
 	std::stringstream vertBuff;
@@ -159,17 +95,6 @@ int main(void) {
 		mesh_indices.push_back(shapes[0].mesh.indices[i].vertex_index);
 	}
 
-
-	// GLfloat vertices[]{
-	// 	0.f,    0.5f,   0.f
-	// 	- 0.5f,  0.f,    0.f,
-	// 	0.5f,   0.f,    0.f
-	// };
-
-	// GLuint indices[]{
-	// 	0, 1, 2
-	// };
-
 	GLuint VAO, VBO, EBO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -183,7 +108,6 @@ int main(void) {
 		sizeof(GLfloat) * attributes.vertices.size(),
 		&attributes.vertices[0],
 		GL_STATIC_DRAW
-		//GL_DYNAMIC_DRAW if needs to move.
 	);
 
 	glVertexAttribPointer(
@@ -206,15 +130,10 @@ int main(void) {
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	glBindVertexArray(0);
 
-
-
-	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
-		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 
         angle += circleRotationSpeed;
@@ -222,25 +141,24 @@ int main(void) {
         glUseProgram(shaderProg);
 
         for(int i = 0; i < 3; i++){
-            float rabbitAngle = (i * 2 * M_PI)/3;
-            float newX = radius * cos(angle + rabbitAngle);
-            float newX = radius * cos(angle + rabbitAngle);
-            float rabbitRotationAngle = angle * 5;
-
+        float rabbitAngle = (i * 8 * 3.14)/3;
+        float newX = radius * cos(angle + rabbitAngle);
+        float newY = radius * sin(angle + rabbitAngle);
+		float rabbitRotationAngle = glfwGetTime() * 0.5 + (sin(10 * 0.5) * 0.2);
 
 		glm::mat4 identity_matrix4 = glm::mat4(1.0f);
 
 		glm::mat4 transformation_matrix = glm::translate(
 			identity_matrix4,
-			glm::vec3(x, y, z)
+			glm::vec3(newX, newY, 0.1)
 		);
 		transformation_matrix = glm::scale(
 			transformation_matrix,
 			glm::vec3(scale_x, scale_y, scale_z)
 		);
 		transformation_matrix = glm::rotate(
-			transformation_matrix,glm::radians(theta),
-			glm::vec3(axis_x, axis_y, axis_z)
+			transformation_matrix,rabbitRotationAngle,
+			glm::vec3(0.0, 0.0, 1.0)
 		);
 
 		unsigned int transformLoc = glGetUniformLocation(shaderProg, "transform");
@@ -253,10 +171,7 @@ int main(void) {
 
 		glDrawElements(GL_TRIANGLES, mesh_indices.size(), GL_UNSIGNED_INT, 0);
         }
-		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
-
-		/* Poll for and process events */
 		glfwPollEvents();
 	}
 

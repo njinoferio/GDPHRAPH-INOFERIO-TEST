@@ -1,13 +1,10 @@
-﻿  glad.c
-  Naomi-GDGRAP.cpp
-C:\Users\JM\Downloads\GDPGRAPH-Naomi-Test\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(38,8): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\JM\Downloads\GDPGRAPH-Naomi-Test\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(41,8): warning C4305: '-=': truncation from 'double' to 'float'
-C:\Users\JM\Downloads\GDPGRAPH-Naomi-Test\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(44,8): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\JM\Downloads\GDPGRAPH-Naomi-Test\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(47,8): warning C4305: '-=': truncation from 'double' to 'float'
-C:\Users\JM\Downloads\GDPGRAPH-Naomi-Test\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(262,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+﻿  Naomi-GDGRAP.cpp
+C:\Users\Naomi\Documents\GitHub\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(144,27): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Naomi\Documents\GitHub\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(147,29): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Naomi\Documents\GitHub\GDPHRAPH-INOFERIO-TEST\Naomi-GDGRAP.cpp(172,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   Generating code
-  1941 of 1968 functions (98.6%) were compiled, the rest were copied from previous compilation.
+  0 of 1968 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Naomi-Assignment1.vcxproj -> C:\Users\JM\Downloads\GDPGRAPH-Naomi-Test\GDPHRAPH-INOFERIO-TEST\x64\Release\Naomi-GDGRAP.exe
+  Naomi-Assignment1.vcxproj -> C:\Users\Naomi\Documents\GitHub\GDPHRAPH-INOFERIO-TEST\x64\Release\Naomi-GDGRAP.exe
